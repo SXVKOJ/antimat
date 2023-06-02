@@ -6,6 +6,12 @@
 
 author: @halupasss
 
+# Установка
+
+* замените токен в antimat.py (8 строчка)
+* pip install -r requirements.txt
+* python antimat.py
+
 # Принцип работы
 
 * Сначала мы заменяем английские транслит символы на русские
