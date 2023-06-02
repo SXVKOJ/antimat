@@ -58,7 +58,7 @@ def extract_regular_chars(text):
 
 
 async def check_message(message: types.Message):
-    message_text = message.text.lower()
+    message_text = extract_regular_chars(message.text.lower())
 
     for word in message_text.split(' '):
         translit_word = replace_english_letters(word)
