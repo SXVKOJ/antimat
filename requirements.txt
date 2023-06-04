@@ -1,2 +1,2 @@
 aiogram==2.25.1
-rapidfuzz==1.9.1
+rapidfuzz==3.1.0

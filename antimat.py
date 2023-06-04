@@ -2,8 +2,7 @@ import re
 
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters import Text
-from rapidfuzz import fuzz
+from rapidfuzz.distance.DamerauLevenshtein import normalized_similarity
 
 with open("token.txt", "r", encoding='utf-8') as f:
     TOKEN = f.read().strip()
@@ -12,7 +11,7 @@ bad_words = []
 
 with open("bad_words.txt", "r", encoding='utf-8') as f:
     bad_words = f.readlines()
-    bad_words = [word.replace("\n", "") for word in bad_words]
+    bad_words = [word.replace("\n", "").strip() for word in bad_words]
 
 
 def replace_english_letters(text):
@@ -45,7 +44,7 @@ def is_bad_word(source: list, dist: str):
     current_percent = 85
 
     for word in source:
-        ratio = fuzz.ratio(dist, word)
+        ratio = normalized_similarity(dist, word)
 
         if ratio >= current_percent:
             return True, ratio
@@ -55,6 +54,7 @@ def is_bad_word(source: list, dist: str):
 
 def extract_regular_chars(text):
     regular_chars = re.sub('[^a-zA-Zа-яА-Я0-9\s]', '', text)
+
     return regular_chars
 
 
