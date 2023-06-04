@@ -4,7 +4,7 @@
 ![src](https://img.shields.io/badge/source%20code-open-red)
 ![src2](https://img.shields.io/badge/language-python-blue)
 
-author: @halupasss
+author: @SXVKOJ
 
 # Установка
 
